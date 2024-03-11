@@ -4,9 +4,10 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build --base=/vanilla-app-template/",
-    "preview": "vite preview"
+    "start": "vite",
+    "build": "vite build --base=/goit-jshw-09/",
+    "preview": "vite preview",
+    "push": "git add ."
   },
   "devDependencies": {
     "vite": "^4.5.2",
