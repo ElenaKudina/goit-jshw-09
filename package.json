@@ -7,7 +7,7 @@
     "start": "vite",
     "build": "vite build --base=/goit-jshw-09/",
     "preview": "vite preview",
-    "push": "git add . && git commit -m 'update' && git push;"
+    "push": "git add . && git commit -m 'update' && git push"
   },
   "devDependencies": {
     "vite": "^4.5.2",
