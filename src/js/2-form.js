@@ -1,7 +1,7 @@
 const STORAGE_KEY = 'feedback-form-state'
 const form = document.querySelector('.feedback-form');
 
-
+//Зберігаю данні при змінах полів
 form.addEventListener('input', () => {
     const userEmail = form.elements.email.value;
     const userMessage = form.elements.message.value;
@@ -18,22 +18,36 @@ form.addEventListener('input', () => {
 form.addEventListener('submit', e => {
   e.preventDefault();
 
-  const data = loadFromLS(STORAGE_KEY) || {};
-  console.log(data);
+
+  const userEmail = form.elements.email.value.trim();
+  const userMessage = form.elements.message.value.trim();
+
+  if (!userEmail || !userMessage) {
+    alert('Please fill out all fields before submitting');
+    return;
+  }
+
+  /* const data = loadFromLS(STORAGE_KEY) || {};
+  console.log(data); */
 
   localStorage.removeItem(STORAGE_KEY);
   form.reset();
 });
 
-function loadFromLS(key = 'empty') {
+function loadFromLS(key) {
   const data = localStorage.getItem(key);
 
-  try {
+  {
+    const data = localStorage.getItem(key);
+    return data ? JSON.parse(data) : null;
+}
+
+  /* try {
     const result = JSON.parse(data);
     return result;
   } catch {
     return data;
-  }
+  } */
 }
 
 function saveToLS(key, value) {
@@ -42,10 +56,12 @@ function saveToLS(key, value) {
 }
 
 function restoreData() {
-  const data = loadFromLS(STORAGE_KEY) || {};
+  const data = loadFromLS(STORAGE_KEY);
 
-  form.elements.email.value = data.email || 'Email';
-  form.elements.message.value = data.message || '';
+  if (data) {
+  form.elements.email.value = data.email;
+  form.elements.message.value = data.message;}
+  
 }
 
 restoreData();
