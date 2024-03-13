@@ -1,7 +1,7 @@
 const STORAGE_KEY = 'feedback-form-state'
 const form = document.querySelector('.feedback-form');
 
-//Зберігаю данні при змінах полів
+
 form.addEventListener('input', () => {
     const userEmail = form.elements.email.value;
     const userMessage = form.elements.message.value;
